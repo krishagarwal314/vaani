@@ -1,0 +1,19 @@
+[project]
+name = "vaani"
+version = "0.1.0"
+description = "Real-time outbound voice AI agent for personal-loan sales calls in English, Hindi and Hinglish"
+requires-python = ">=3.11"
+dependencies = ["pydantic>=2.6"]
+
+[project.optional-dependencies]
+llm = ["openai>=1.40"]
+api = ["fastapi>=0.110", "uvicorn[standard]>=0.29"]
+dev = ["pytest>=8", "httpx>=0.27", "fastapi>=0.110"]
+# Phase 2+ (not wired yet): livekit-agents, livekit-plugins-{deepgram,elevenlabs,silero,openai,turn-detector}
+# Phase 4 (not wired yet): transformers, peft, datasets, jiwer, parler-tts
+
+[tool.setuptools.packages.find]
+include = ["agent*", "tools*", "crm_service*", "eval*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

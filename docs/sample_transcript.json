@@ -1,0 +1,518 @@
+{
+  "schema_version": "1.0",
+  "call_id": "sample-hinglish-callback",
+  "prompt_version": "p-f676065a4f0e",
+  "mode": "text",
+  "started_at": "2026-10-21T10:00:00+05:30",
+  "ended_at": "2026-10-21T10:00:00+05:30",
+  "customer_phone": "+91******0002",
+  "lang_initial": "hinglish",
+  "stack": {
+    "llm": "mock"
+  },
+  "turns": [
+    {
+      "index": 0,
+      "speaker": "agent",
+      "text": "Namaste, kya meri baat Priya Verma ji se ho rahi hai?",
+      "lang": "hinglish",
+      "start_ms": 1700,
+      "end_ms": 5145,
+      "stage": "greeting",
+      "intent": null,
+      "interrupted": false,
+      "unspoken_text": null,
+      "metrics": null
+    },
+    {
+      "index": 1,
+      "speaker": "user",
+      "text": "haan ji",
+      "lang": "hinglish",
+      "start_ms": 3400,
+      "end_ms": 3400,
+      "stage": "greeting",
+      "intent": null,
+      "interrupted": false,
+      "unspoken_text": null,
+      "metrics": null
+    },
+    {
+      "index": 2,
+      "speaker": "agent",
+      "text": "Priya ji, main Vaani bol rahi hoon Sahayak Finance se, aapke pre-approved personal loan offer ke baare mein. Yeh call quality ke liye record ho rahi hai. Kya aapke paas do minute hain?",
+      "lang": "hinglish",
+      "start_ms": 6800,
+      "end_ms": 18760,
+      "stage": "consent",
+      "intent": "affirm",
+      "interrupted": false,
+      "unspoken_text": null,
+      "metrics": null
+    },
+    {
+      "index": 3,
+      "speaker": "user",
+      "text": "haan bolo",
+      "lang": "hinglish",
+      "start_ms": 8500,
+      "end_ms": 8500,
+      "stage": "consent",
+      "intent": null,
+      "interrupted": false,
+      "unspoken_text": null,
+      "metrics": null
+    },
+    {
+      "index": 4,
+      "speaker": "agent",
+      "text": "Badhiya. Aapko kitne loan ki zaroorat hai, aur kis cheez ke liye?",
+      "lang": "hinglish",
+      "start_ms": 11900,
+      "end_ms": 16125,
+      "stage": "need_discovery",
+      "intent": "affirm",
+      "interrupted": false,
+      "unspoken_text": null,
+      "metrics": null
+    },
+    {
+      "index": 5,
+      "speaker": "user",
+      "text": "teen lakh chahiye, shaadi ke liye",
+      "lang": "hinglish",
+      "start_ms": 13600,
+      "end_ms": 13600,
+      "stage": "need_discovery",
+      "intent": null,
+      "interrupted": false,
+      "unspoken_text": null,
+      "metrics": null
+    },
+    {
+      "index": 6,
+      "speaker": "agent",
+      "text": "Bas confirm kar loon, three lakh rupaye, sahi hai?",
+      "lang": "hinglish",
+      "start_ms": 15300,
+      "end_ms": 18550,
+      "stage": "need_discovery",
+      "intent": "provide_info",
+      "interrupted": false,
+      "unspoken_text": null,
+      "metrics": null
+    },
+    {
+      "index": 7,
+      "speaker": "user",
+      "text": "haan",
+      "lang": "hinglish",
+      "start_ms": 17000,
+      "end_ms": 17000,
+      "stage": "need_discovery",
+      "intent": null,
+      "interrupted": false,
+      "unspoken_text": null,
+      "metrics": null
+    },
+    {
+      "index": 8,
+      "speaker": "agent",
+      "text": "Aap salaried hain ya self-employed?",
+      "lang": "hinglish",
+      "start_ms": 22100,
+      "end_ms": 24375,
+      "stage": "eligibility",
+      "intent": "other",
+      "interrupted": false,
+      "unspoken_text": null,
+      "metrics": null
+    },
+    {
+      "index": 9,
+      "speaker": "user",
+      "text": "salaried hoon",
+      "lang": "hinglish",
+      "start_ms": 23800,
+      "end_ms": 23800,
+      "stage": "eligibility",
+      "intent": null,
+      "interrupted": false,
+      "unspoken_text": null,
+      "metrics": null
+    },
+    {
+      "index": 10,
+      "speaker": "agent",
+      "text": "Aapki monthly in-hand income kitni hai?",
+      "lang": "hinglish",
+      "start_ms": 25500,
+      "end_ms": 28035,
+      "stage": "eligibility",
+      "intent": "provide_info",
+      "interrupted": false,
+      "unspoken_text": null,
+      "metrics": null
+    },
+    {
+      "index": 11,
+      "speaker": "user",
+      "text": "60 hazaar",
+      "lang": "hinglish",
+      "start_ms": 27200,
+      "end_ms": 27200,
+      "stage": "eligibility",
+      "intent": null,
+      "interrupted": false,
+      "unspoken_text": null,
+      "metrics": null
+    },
+    {
+      "index": 12,
+      "speaker": "agent",
+      "text": "Bas confirm kar loon, sixty thousand rupaye, sahi hai?",
+      "lang": "hinglish",
+      "start_ms": 28900,
+      "end_ms": 32410,
+      "stage": "eligibility",
+      "intent": "provide_info",
+      "interrupted": false,
+      "unspoken_text": null,
+      "metrics": null
+    },
+    {
+      "index": 13,
+      "speaker": "user",
+      "text": "haan sahi hai",
+      "lang": "hinglish",
+      "start_ms": 30600,
+      "end_ms": 30600,
+      "stage": "eligibility",
+      "intent": null,
+      "interrupted": false,
+      "unspoken_text": null,
+      "metrics": null
+    },
+    {
+      "index": 14,
+      "speaker": "agent",
+      "text": "Kya abhi aap koi EMI bhar rahe hain? Agar haan, toh total kitni har mahine?",
+      "lang": "hinglish",
+      "start_ms": 34000,
+      "end_ms": 38875,
+      "stage": "eligibility",
+      "intent": "other",
+      "interrupted": false,
+      "unspoken_text": null,
+      "metrics": null
+    },
+    {
+      "index": 15,
+      "speaker": "user",
+      "text": "koi emi nahi",
+      "lang": "hinglish",
+      "start_ms": 35700,
+      "end_ms": 35700,
+      "stage": "eligibility",
+      "intent": null,
+      "interrupted": false,
+      "unspoken_text": null,
+      "metrics": null
+    },
+    {
+      "index": 16,
+      "speaker": "agent",
+      "text": "Achhi khabar, aap three lakh rupaye ke liye eligible hain, 12 percent par 24 mahine ke liye. Aapki EMI fourteen thousand one hundred twenty-two rupaye mahina hogi. Kya hum aage badhein?",
+      "lang": "hinglish",
+      "start_ms": 40800,
+      "end_ms": 52825,
+      "stage": "offer",
+      "intent": "provide_info",
+      "interrupted": false,
+      "unspoken_text": null,
+      "metrics": null
+    },
+    {
+      "index": 17,
+      "speaker": "user",
+      "text": "are you a robot?",
+      "lang": "en",
+      "start_ms": 44200,
+      "end_ms": 44200,
+      "stage": "offer",
+      "intent": null,
+      "interrupted": false,
+      "unspoken_text": null,
+      "metrics": null
+    },
+    {
+      "index": 18,
+      "speaker": "agent",
+      "text": "Yes, I'm Vaani, an AI assistant calling on behalf of Sahayak Finance. A human advisor can call you if you prefer. Achhi khabar, aap three lakh rupaye ke liye eligible hain, 12 percent par 24 mahine ke liye. Aapki EMI fourteen thousand one hundred twenty-two rupaye mahina hogi. Kya hum aage badhein?",
+      "lang": "en",
+      "start_ms": 47600,
+      "end_ms": 67035,
+      "stage": "offer",
+      "intent": "ask_if_bot",
+      "interrupted": false,
+      "unspoken_text": null,
+      "metrics": null
+    },
+    {
+      "index": 19,
+      "speaker": "user",
+      "text": "ghar walon se puchna padega",
+      "lang": "hinglish",
+      "start_ms": 51000,
+      "end_ms": 51000,
+      "stage": "offer",
+      "intent": null,
+      "interrupted": false,
+      "unspoken_text": null,
+      "metrics": null
+    },
+    {
+      "index": 20,
+      "speaker": "agent",
+      "text": "Bilkul, yeh bada decision hai. Family se baat karne ke baad main call kar sakti hoon. Callback schedule kar doon?",
+      "lang": "hinglish",
+      "start_ms": 54400,
+      "end_ms": 61745,
+      "stage": "objection",
+      "intent": "objection_family",
+      "interrupted": false,
+      "unspoken_text": null,
+      "metrics": null
+    },
+    {
+      "index": 21,
+      "speaker": "user",
+      "text": "haan theek hai",
+      "lang": "hinglish",
+      "start_ms": 56100,
+      "end_ms": 56100,
+      "stage": "objection",
+      "intent": null,
+      "interrupted": false,
+      "unspoken_text": null,
+      "metrics": null
+    },
+    {
+      "index": 22,
+      "speaker": "agent",
+      "text": "Zaroor. Aapko kis time call karoon?",
+      "lang": "hinglish",
+      "start_ms": 59500,
+      "end_ms": 61775,
+      "stage": "callback",
+      "intent": "request_callback",
+      "interrupted": false,
+      "unspoken_text": null,
+      "metrics": null
+    },
+    {
+      "index": 23,
+      "speaker": "user",
+      "text": "kal shaam 6 baje",
+      "lang": "hinglish",
+      "start_ms": 61200,
+      "end_ms": 61200,
+      "stage": "callback",
+      "intent": null,
+      "interrupted": false,
+      "unspoken_text": null,
+      "metrics": null
+    },
+    {
+      "index": 24,
+      "speaker": "agent",
+      "text": "Ho gaya, main aapko tomorrow at 6 PM call karungi. Aapke time ke liye shukriya, Priya ji. Aapka din shubh ho!",
+      "lang": "hinglish",
+      "start_ms": 66300,
+      "end_ms": 73385,
+      "stage": "closing",
+      "intent": "provide_info",
+      "interrupted": false,
+      "unspoken_text": null,
+      "metrics": null
+    }
+  ],
+  "outcome": "callback_booked",
+  "tool_calls": [
+    {
+      "name": "crm_lookup",
+      "arguments": {
+        "phone": "+919800000002"
+      },
+      "result": {
+        "found": true,
+        "phone": "+919800000002",
+        "name": "Priya Verma",
+        "preferred_lang": "hinglish",
+        "pre_approved_amount": 300000,
+        "offer_rate": 12.0,
+        "default_tenure": 24,
+        "dnc": false
+      },
+      "error": null,
+      "stage": "greeting",
+      "turn_index": 0,
+      "ts_ms": 0
+    },
+    {
+      "name": "calculate_emi",
+      "arguments": {
+        "principal": 300000,
+        "rate": 12.0,
+        "tenure": 24
+      },
+      "result": {
+        "principal": 300000,
+        "rate": 12.0,
+        "tenure": 24,
+        "emi": 14122,
+        "total_payable": 338929,
+        "total_interest": 38929
+      },
+      "error": null,
+      "stage": "offer",
+      "turn_index": 15,
+      "ts_ms": 39100
+    },
+    {
+      "name": "book_callback",
+      "arguments": {
+        "time": "2026-10-22T18:00:00+05:30"
+      },
+      "result": {
+        "booked": true,
+        "callback_id": "b126ca0a",
+        "time": "2026-10-22T18:00:00+05:30",
+        "phone": "+919800000002"
+      },
+      "error": null,
+      "stage": "callback",
+      "turn_index": 23,
+      "ts_ms": 62900
+    }
+  ],
+  "events": [
+    {
+      "type": "transition",
+      "ts_ms": 5100,
+      "stage": "greeting",
+      "detail": {
+        "from": "greeting",
+        "to": "consent"
+      }
+    },
+    {
+      "type": "transition",
+      "ts_ms": 10200,
+      "stage": "consent",
+      "detail": {
+        "from": "consent",
+        "to": "need_discovery"
+      }
+    },
+    {
+      "type": "slot_confirmed",
+      "ts_ms": 18700,
+      "stage": "need_discovery",
+      "detail": {
+        "slot": "loan_amount",
+        "value": 300000
+      }
+    },
+    {
+      "type": "transition",
+      "ts_ms": 20400,
+      "stage": "need_discovery",
+      "detail": {
+        "from": "need_discovery",
+        "to": "eligibility"
+      }
+    },
+    {
+      "type": "slot_confirmed",
+      "ts_ms": 32300,
+      "stage": "eligibility",
+      "detail": {
+        "slot": "monthly_income",
+        "value": 60000
+      }
+    },
+    {
+      "type": "transition",
+      "ts_ms": 37400,
+      "stage": "eligibility",
+      "detail": {
+        "from": "eligibility",
+        "to": "offer"
+      }
+    },
+    {
+      "type": "language_switch",
+      "ts_ms": 42500,
+      "stage": "offer",
+      "detail": {
+        "from": "hinglish",
+        "to": "en"
+      }
+    },
+    {
+      "type": "guardrail",
+      "ts_ms": 45900,
+      "stage": "offer",
+      "detail": {
+        "rule": "bot_disclosure"
+      }
+    },
+    {
+      "type": "language_switch",
+      "ts_ms": 49300,
+      "stage": "offer",
+      "detail": {
+        "from": "en",
+        "to": "hinglish"
+      }
+    },
+    {
+      "type": "transition",
+      "ts_ms": 52700,
+      "stage": "offer",
+      "detail": {
+        "from": "offer",
+        "to": "objection"
+      }
+    },
+    {
+      "type": "transition",
+      "ts_ms": 57800,
+      "stage": "objection",
+      "detail": {
+        "from": "objection",
+        "to": "callback"
+      }
+    },
+    {
+      "type": "transition",
+      "ts_ms": 64600,
+      "stage": "callback",
+      "detail": {
+        "from": "callback",
+        "to": "closing"
+      }
+    }
+  ],
+  "final_slots": {
+    "identity_confirmed": true,
+    "consent_given": true,
+    "loan_amount": 300000,
+    "loan_purpose": "wedding",
+    "employment_type": "salaried",
+    "monthly_income": 60000,
+    "existing_emi": 0,
+    "callback_time": "2026-10-22T18:00:00+05:30"
+  }
+}

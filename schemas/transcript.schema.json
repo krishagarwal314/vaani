@@ -1,0 +1,416 @@
+{
+  "$defs": {
+    "CallEvent": {
+      "description": "Non-turn happenings: transitions, rejected transitions, barge-in, dead air, guardrails.",
+      "properties": {
+        "type": {
+          "title": "Type",
+          "type": "string"
+        },
+        "ts_ms": {
+          "title": "Ts Ms",
+          "type": "integer"
+        },
+        "stage": {
+          "$ref": "#/$defs/Stage"
+        },
+        "detail": {
+          "additionalProperties": true,
+          "default": {},
+          "title": "Detail",
+          "type": "object"
+        }
+      },
+      "required": [
+        "type",
+        "ts_ms",
+        "stage"
+      ],
+      "title": "CallEvent",
+      "type": "object"
+    },
+    "Outcome": {
+      "enum": [
+        "in_progress",
+        "applied",
+        "callback_booked",
+        "not_interested",
+        "do_not_call",
+        "wrong_person",
+        "no_response",
+        "no_sale",
+        "dropped"
+      ],
+      "title": "Outcome",
+      "type": "string"
+    },
+    "Speaker": {
+      "enum": [
+        "agent",
+        "user"
+      ],
+      "title": "Speaker",
+      "type": "string"
+    },
+    "Stage": {
+      "enum": [
+        "greeting",
+        "consent",
+        "need_discovery",
+        "eligibility",
+        "offer",
+        "objection",
+        "commitment",
+        "callback",
+        "closing"
+      ],
+      "title": "Stage",
+      "type": "string"
+    },
+    "ToolCallRecord": {
+      "properties": {
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "arguments": {
+          "additionalProperties": true,
+          "title": "Arguments",
+          "type": "object"
+        },
+        "result": {
+          "anyOf": [
+            {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Result"
+        },
+        "error": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Error"
+        },
+        "stage": {
+          "$ref": "#/$defs/Stage"
+        },
+        "turn_index": {
+          "description": "Index of the turn that triggered the call",
+          "title": "Turn Index",
+          "type": "integer"
+        },
+        "ts_ms": {
+          "title": "Ts Ms",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "name",
+        "arguments",
+        "stage",
+        "turn_index",
+        "ts_ms"
+      ],
+      "title": "ToolCallRecord",
+      "type": "object"
+    },
+    "Turn": {
+      "properties": {
+        "index": {
+          "title": "Index",
+          "type": "integer"
+        },
+        "speaker": {
+          "$ref": "#/$defs/Speaker"
+        },
+        "text": {
+          "description": "What was actually spoken (agent text is truncated on barge-in)",
+          "title": "Text",
+          "type": "string"
+        },
+        "lang": {
+          "enum": [
+            "en",
+            "hi",
+            "hinglish"
+          ],
+          "title": "Lang",
+          "type": "string"
+        },
+        "start_ms": {
+          "title": "Start Ms",
+          "type": "integer"
+        },
+        "end_ms": {
+          "title": "End Ms",
+          "type": "integer"
+        },
+        "stage": {
+          "$ref": "#/$defs/Stage"
+        },
+        "intent": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Intent"
+        },
+        "interrupted": {
+          "default": false,
+          "title": "Interrupted",
+          "type": "boolean"
+        },
+        "unspoken_text": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Agent text discarded because of barge-in",
+          "title": "Unspoken Text"
+        },
+        "metrics": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/TurnMetrics"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        }
+      },
+      "required": [
+        "index",
+        "speaker",
+        "text",
+        "lang",
+        "start_ms",
+        "end_ms",
+        "stage"
+      ],
+      "title": "Turn",
+      "type": "object"
+    },
+    "TurnMetrics": {
+      "description": "Voice-mode latency marks (ms since call start), attached to agent turns.\n\nVoice-to-voice latency = tts_first_byte_ms - user_eos_ms. Null in text mode.",
+      "properties": {
+        "user_eos_ms": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "User Eos Ms"
+        },
+        "user_true_end_ms": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "User True End Ms"
+        },
+        "stt_final_ms": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Stt Final Ms"
+        },
+        "llm_first_token_ms": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Llm First Token Ms"
+        },
+        "tts_first_byte_ms": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Tts First Byte Ms"
+        },
+        "turn_detector": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Turn Detector"
+        },
+        "filler_used": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Filler Used"
+        }
+      },
+      "title": "TurnMetrics",
+      "type": "object"
+    }
+  },
+  "properties": {
+    "schema_version": {
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "call_id": {
+      "title": "Call Id",
+      "type": "string"
+    },
+    "prompt_version": {
+      "title": "Prompt Version",
+      "type": "string"
+    },
+    "mode": {
+      "enum": [
+        "text",
+        "voice"
+      ],
+      "title": "Mode",
+      "type": "string"
+    },
+    "started_at": {
+      "format": "date-time",
+      "title": "Started At",
+      "type": "string"
+    },
+    "ended_at": {
+      "anyOf": [
+        {
+          "format": "date-time",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Ended At"
+    },
+    "customer_phone": {
+      "description": "Masked, e.g. +91******0001",
+      "title": "Customer Phone",
+      "type": "string"
+    },
+    "lang_initial": {
+      "enum": [
+        "en",
+        "hi",
+        "hinglish"
+      ],
+      "title": "Lang Initial",
+      "type": "string"
+    },
+    "stack": {
+      "additionalProperties": {
+        "type": "string"
+      },
+      "description": "llm / stt / tts / turn_detector",
+      "title": "Stack",
+      "type": "object"
+    },
+    "turns": {
+      "default": [],
+      "items": {
+        "$ref": "#/$defs/Turn"
+      },
+      "title": "Turns",
+      "type": "array"
+    },
+    "outcome": {
+      "$ref": "#/$defs/Outcome",
+      "default": "in_progress"
+    },
+    "tool_calls": {
+      "default": [],
+      "items": {
+        "$ref": "#/$defs/ToolCallRecord"
+      },
+      "title": "Tool Calls",
+      "type": "array"
+    },
+    "events": {
+      "default": [],
+      "items": {
+        "$ref": "#/$defs/CallEvent"
+      },
+      "title": "Events",
+      "type": "array"
+    },
+    "final_slots": {
+      "additionalProperties": true,
+      "default": {},
+      "title": "Final Slots",
+      "type": "object"
+    }
+  },
+  "required": [
+    "call_id",
+    "prompt_version",
+    "mode",
+    "started_at",
+    "customer_phone",
+    "lang_initial"
+  ],
+  "title": "Transcript",
+  "type": "object"
+}

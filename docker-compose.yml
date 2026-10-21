@@ -1,0 +1,26 @@
+services:
+  postgres:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: vaani
+      POSTGRES_PASSWORD: vaani
+      POSTGRES_DB: vaani
+    ports: ["5432:5432"]
+    volumes:
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+      - pgdata:/var/lib/postgresql/data
+
+  crm:
+    build: { context: ., dockerfile: crm_service/Dockerfile }
+    ports: ["8000:8000"]
+    depends_on: [postgres]
+
+  # Phase 2: LiveKit voice worker (not wired yet)
+  # agent:
+  #   build: .
+  #   command: python -m agent.voice.worker start
+  #   env_file: .env
+  #   depends_on: [crm, postgres]
+
+volumes:
+  pgdata:

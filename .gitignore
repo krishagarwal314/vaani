@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+.venv/
+.env
+.pytest_cache/
+*.egg-info/
+transcripts/
+!docs/sample_transcript.json
+finetune/runs/
+finetune/data/
