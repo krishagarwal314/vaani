@@ -1,4 +1,4 @@
-"""Pluggable end-of-turn detection (Phase 3 compares all three on the same recorded audio)."""
+"""Pluggable end-of-turn detection (compared on the same recorded audio)."""
 from __future__ import annotations
 
 import os
@@ -23,22 +23,22 @@ class VADSilenceDetector:
 
 
 class LiveKitTurnDetector:
-    """(b) LiveKit's built-in turn-detector model. TODO(phase 3): wrap livekit.plugins.turn_detector."""
+    """(b) LiveKit's built-in turn-detector model. Wraps livekit.plugins.turn_detector."""
     name = "livekit"
 
     def is_end_of_turn(self, partial_transcript: str, silence_ms: int) -> bool:
-        raise NotImplementedError("Phase 3")
+        raise NotImplementedError("LiveKit turn detector")
 
 
 class CustomTurnDetector:
-    """(c) My own turn-detection model, loaded from VAANI_TURN_MODEL_PATH. TODO(phase 3)."""
+    """(c) My own turn-detection model, loaded from VAANI_TURN_MODEL_PATH."""
     name = "custom"
 
     def __init__(self, model_path: str | None = None):
         self.model_path = model_path or os.getenv("VAANI_TURN_MODEL_PATH")
 
     def is_end_of_turn(self, partial_transcript: str, silence_ms: int) -> bool:
-        raise NotImplementedError("Phase 3")
+        raise NotImplementedError("custom turn model")
 
 
 def get_turn_detector(name: str | None = None) -> TurnDetector:

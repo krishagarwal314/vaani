@@ -4,7 +4,7 @@ Order of precedence for every user turn:
   1. deterministic guardrails (do-not-call, not interested, "are you a bot?")
   2. pending amount read-back confirmation
   3. LLM step (structured output) -> slot merge -> validated stage transition -> stage entry line
-The same session object is driven by the text CLI and (Phase 2) the LiveKit voice worker.
+The same session object is driven by the text CLI and the LiveKit voice worker.
 """
 from __future__ import annotations
 

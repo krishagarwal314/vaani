@@ -15,7 +15,7 @@ services:
     ports: ["8000:8000"]
     depends_on: [postgres]
 
-  # Phase 2: LiveKit voice worker (not wired yet)
+  # LiveKit voice worker
   # agent:
   #   build: .
   #   command: python -m agent.voice.worker start

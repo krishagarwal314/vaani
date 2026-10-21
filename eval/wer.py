@@ -1,4 +1,4 @@
-"""Word error rate, overall and restricted to number/amount words (Phase 4 STT evaluation).
+"""Word error rate, overall and restricted to number/amount words for STT evaluation.
 
     python eval/wer.py refs.txt hyps.txt     # one utterance per line, aligned
 """

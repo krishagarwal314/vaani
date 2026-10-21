@@ -1,4 +1,4 @@
-"""Whisper-small + LoRA fine-tuning config (Phase 4, training loop not implemented yet)."""
+"""Whisper-small + LoRA fine-tuning config."""
 from dataclasses import dataclass, field
 
 
@@ -18,7 +18,7 @@ class LoraTrainConfig:
 
 
 def main() -> None:
-    raise NotImplementedError("Phase 4: load data splits, wrap model with peft.LoraConfig, train, push adapter")
+    raise NotImplementedError("load data splits, wrap model with peft.LoraConfig, train, push adapter")
 
 
 if __name__ == "__main__":

@@ -56,7 +56,7 @@ def main() -> None:
     args = parser.parse_args()
     transcripts = [t for t in load_transcripts(args.directory) if t.mode == "voice"]
     if not transcripts:
-        sys.exit(f"no voice-mode transcripts in {args.directory} (Phase 3 harness not run yet)")
+        sys.exit(f"no voice-mode transcripts in {args.directory}")
     print(report(collect(transcripts, args.detector), len(transcripts)))
 
 

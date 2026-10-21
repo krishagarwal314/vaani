@@ -115,12 +115,3 @@ tests/
   scripts for voice-to-voice latency (median/p95/p99), talk-over rate and WER.
 - **Streaming-ready:** a sentence chunker for incremental TTS, latency-triggered fillers and
   turn detectors you can swap.
-
-## Roadmap
-
-- LiveKit Agents voice transport with Twilio SIP outbound dialing
-- Turn-detection comparison: VAD only vs LiveKit turn detector vs a custom model, on replayed call audio
-- Whisper-small + LoRA for Hinglish speech, and Indic Parler-TTS voice adaptation
-
-Benchmarks are published in [RESULTS.md](RESULTS.md) as they are measured; every number comes from a
-script in `eval/`.

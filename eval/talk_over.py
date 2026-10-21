@@ -36,7 +36,7 @@ def main() -> None:
     parser.add_argument("directory", nargs="?", default="transcripts")
     rates = talk_over_rates(load_transcripts(parser.parse_args().directory))
     if not rates:
-        sys.exit("no annotated voice turns found (Phase 3 harness not run yet)")
+        sys.exit("no annotated voice turns found in this directory")
     for detector, (over, total) in sorted(rates.items()):
         print(f"{detector:<10} {over}/{total} = {100 * over / total:.1f}%")
 

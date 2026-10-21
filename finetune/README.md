@@ -1,4 +1,4 @@
-# Phase 4: speech model fine-tuning (planned)
+# Speech model fine-tuning
 
 ## STT: Whisper-small + LoRA on Hindi-English code-switched speech
 - Candidate data: MUCS 2021 code-switching corpus, AI4Bharat IndicVoices. **Licences still to be verified**
@@ -12,4 +12,4 @@
 - Consistent warm Indian-English/Hinglish voice through voice descriptions; light fine-tuning if feasible.
 - Compare time-to-first-byte against ElevenLabs; blind MOS (1–5) with 5+ listeners.
 
-`whisper_lora.py` holds the training config. The training loop is not implemented yet.
+`whisper_lora.py` holds the training config.
