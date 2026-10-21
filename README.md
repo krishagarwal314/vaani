@@ -7,7 +7,7 @@ At its core is a deterministic, fully tested conversation engine. A 9-stage stat
 on script, validates every stage transition in code, reads back every amount before accepting it, and
 recovers from barge-ins, dead air, off-topic answers, language switches and "are you a bot?" moments.
 
-![tests](https://github.com/swordfish-999/vaani/actions/workflows/ci.yml/badge.svg)
+![tests](https://github.com/krishagarwal314/vaani/actions/workflows/ci.yml/badge.svg)
 
 ## Architecture
 
