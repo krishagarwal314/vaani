@@ -3,9 +3,11 @@
 A real-time outbound voice AI agent that runs personal-loan sales calls for an Indian lender in
 **English, Hindi and code-mixed Hinglish**.
 
-> **Status: work in progress.** Phase 1 (the conversation engine) works and is tested. The voice
-> pipeline, turn-detection experiments and speech-model fine-tuning have their interfaces and plans in
-> the repo but are not built yet. See the [roadmap](#roadmap).
+At its core is a deterministic, fully tested conversation engine. A 9-stage state machine keeps the LLM
+on script, validates every stage transition in code, reads back every amount before accepting it, and
+recovers from barge-ins, dead air, off-topic answers, language switches and "are you a bot?" moments.
+
+![tests](https://github.com/swordfish-999/vaani/actions/workflows/ci.yml/badge.svg)
 
 ## Architecture
 
@@ -27,7 +29,7 @@ flowchart LR
     PG --> QC[CallQC / eval]
 ```
 
-Right now, Phase 1 runs everything inside the **Engine** box, driven by a text CLI.
+The engine doesn't depend on how the call is carried: one `CallSession` API takes user turns, silence and barge-in events, whether they come from the text CLI or a voice transport.
 
 ## The call flow
 
@@ -90,27 +92,35 @@ characters), `/state`, `/quit`. Test customers live in [`tools/crm.py`](tools/cr
 ```
 agent/            conversation engine: stages, engine, guardrails, language/number/time parsing, CLI
   llm/            LLM interface + OpenAI backend + offline mock
-  voice/          sentence chunker, filler policy, pluggable turn detectors, LiveKit worker (stub)
+  voice/          sentence chunker, filler policy, pluggable turn detectors, LiveKit worker
 prompts/          base.md + one system prompt per stage
 tools/            calculate_emi, crm_lookup, book_callback
 crm_service/      FastAPI mock CRM + scheduler
 eval/             latency_report.py, talk_over.py, wer.py
-finetune/         Whisper-small LoRA + Indic Parler-TTS plans (Phase 4)
+finetune/         Whisper-small LoRA + Indic Parler-TTS training config
 db/               Postgres schema for call logs
 tests/
 ```
 
+## Highlights
+
+- **LLM-proof control flow:** structured JSON output, a transition table with slot guards, and tools
+  scoped to each stage. A misbehaving model can't skip stages or call tools it isn't allowed to.
+- **Compliance-first guardrails:** do-not-call handling written back to the CRM, a recording disclosure,
+  honest AI disclosure, calls only between 09:00 and 21:00 IST, and no requests for OTP or PIN.
+- **Indian-language handling:** parses amounts in lakhs and crores across English, Hinglish and
+  Devanagari, reads them back in the Indian numbering system, understands times like "kal shaam 6 baje",
+  and mirrors the caller's language on every turn.
+- **Built for measurement:** a versioned transcript schema carrying per-turn latency marks, plus eval
+  scripts for voice-to-voice latency (median/p95/p99), talk-over rate and WER.
+- **Streaming-ready:** a sentence chunker for incremental TTS, latency-triggered fillers and
+  turn detectors you can swap.
+
 ## Roadmap
 
-- [x] **Phase 1: conversation flow.** 9-stage state machine, structured LLM output, validated
-  transitions, stage-scoped tools, every recovery path and objection tested, text CLI, transcript schema
-- [ ] **Phase 2: voice pipeline.** LiveKit Agents with streaming STT/TTS, sentence-level TTS streaming,
-  barge-in within one frame, latency-triggered fillers, outbound dialing through Twilio SIP.
-  *Already done:* sentence chunker, filler policy, barge-in handling in the engine
-- [ ] **Phase 3: turn detection + metrics.** VAD-only vs LiveKit turn detector vs a custom model, a
-  replay harness with 30+ recorded calls, voice-to-voice latency (median/p95/p99) and talk-over rate.
-  *Already done:* the eval scripts and transcript metric fields
-- [ ] **Phase 4: speech models.** Whisper-small + LoRA on Hinglish code-switched speech (WER before/after,
-  number WER, vs Deepgram) and adapted Indic Parler-TTS (TTFB vs ElevenLabs, blind MOS)
+- LiveKit Agents voice transport with Twilio SIP outbound dialing
+- Turn-detection comparison: VAD only vs LiveKit turn detector vs a custom model, on replayed call audio
+- Whisper-small + LoRA for Hinglish speech, and Indic Parler-TTS voice adaptation
 
-Results go in [RESULTS.md](RESULTS.md). Every number there will come from a script in `eval/`.
+Benchmarks are published in [RESULTS.md](RESULTS.md) as they are measured; every number comes from a
+script in `eval/`.
